@@ -1,4 +1,4 @@
-from game.card import Card
+from game.guesser import Card
 
 CRED = '\033[91m'
 CGRN = '\033[92m'
