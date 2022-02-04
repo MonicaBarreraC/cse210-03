@@ -47,4 +47,3 @@ root                    (project root folder)
 * Mónica Barrera (bar21095@byui.edu)
 * Lewis Smith (smi21061@byui.edu)
 * James Thomas (tho21065@byui.edu)
-

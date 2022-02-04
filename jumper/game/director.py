@@ -20,7 +20,6 @@ class Dealer:
         first_turn (boolean): Wheter or not the first turn is being played.
     """
 
-#Lewis ->
     def __init__(self):
         """Constructs a new Dealer.
         
@@ -51,7 +50,7 @@ class Dealer:
         print("\nThanks for playing!\n")
 
 
-#Lewis ->
+
     def get_inputs(self):
         """Ask the user if they want to play. Draw a card before the first turn.
            Then ask the user to guess if the next card is higher or lower.
