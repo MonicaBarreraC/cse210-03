@@ -3,8 +3,11 @@
 Jumper is a game similar to hang-man, a game all of us can probably remember playing as a child. 
 Jumber is an intense game! A game in which the player seeks to solve a puzzle by guessing the 
 letters of a secret word one at a time. If you fail your parachut breaks and you fall to your death!
-Get ready beacuse this is about to be an exciting adventure!
-
+Like Jeff Wuorio said, 
+    "There are old skydivers and bold skydivers,
+    but there are no old, bold skydivers."
+              - Jeff Wuorio -
+So get ready beacuse this is about to be an exciting adventure!
 
 ## Rules
 ---
