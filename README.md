@@ -1,21 +1,19 @@
 # Jumper
 ---
-Hilo is a game in which the player guesses if the next card drawn by the dealer will be higher or lower 
-than the previous one. Points are won or lost based on whether or not the player guessed correctly.
-Looks like fun, doesn't it? So go ahead and play.
+Jumper is a game similar to hang-man, a game all of us can probably remember playing as a child. 
+Jumber is an intense game! A game in which the player seeks to solve a puzzle by guessing the 
+letters of a secret word one at a time. If you fail your parachut breaks and you fall to your death!
+Get ready beacuse this is about to be an exciting adventure!
+
 
 ## Rules
 ---
-* The player starts the game with 300 points.
-* Individual cards are represented as a number from 1 to 13.
-* The current card is displayed.
-* The player guesses if the next one will be higher or lower.
-* The the next card is displayed.
-* The player earns 100 points if they guessed correctly.
-* The player loses 75 points if they guessed incorrectly.
-* If a player reaches 0 points the game is over.
-* If a player has more than 0 points they decide if they want to keep playing.
-* If a player decides not to play again the game is over.
+  The puzzle is a secret word randomly chosen from a list.
+  The player guesses a letter in the puzzle.
+  If the guess is correct, the letter is revealed.
+  If the guess is incorrect, a line is cut on the player's parachute.
+  If the puzzle is solved the game is over.
+  If the player has no more parachute the game is over.
 
 ## Getting Started
 ---
@@ -49,3 +47,4 @@ root                    (project root folder)
 * Mónica Barrera (bar21095@byui.edu)
 * Lewis Smith (smi21061@byui.edu)
 * James Thomas (tho21065@byui.edu)
+

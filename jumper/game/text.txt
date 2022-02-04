@@ -11,7 +11,7 @@
     - Chris -> Jumper
     - Jonathan -> Jumper
     - James -> Director
-    - Lewis ->
+    - Lewis -> ReadMe
     - Mónica ->
 
 
