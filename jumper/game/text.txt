@@ -1,0 +1,73 @@
+1. Instructions of the Program:
+    - Overview
+    - Suggestions
+    - Start of plan
+
+2. Github repository:
+    - Upload folder
+    - Everyone commits something
+
+3. Program Plan:
+    - To do list
+
+
+Classes:
+    - words.py ->
+        * A list of Words
+        * Method: select one random word
+    - Jumper
+        * Number of lives
+    - Organizer?
+        * Similar to director or dealer
+    - Comparator?
+        * If the input letter is on the word
+
+Parachute
+
+    4 LIVES
+     ___
+    /___\
+    \   /
+     \ /
+      0
+     /|\
+     / \
+
+    3 LIVES
+
+    /___\
+    \   /
+     \ /
+      0
+     /|\
+     / \
+
+    2 LIVES
+
+    \   /
+     \ /
+      0
+     /|\
+     / \
+
+    1 LIVE
+
+     \ /
+      0
+     /|\
+     / \
+
+    0 LIVES
+
+      x
+     /|\
+     / \
+
+Program:
+    ° Get a random word from the list
+    -> Loop:
+        ° Print the word with '_'
+        ° Print Jumper status
+        ° Ask for a letter
+    ° End
+
