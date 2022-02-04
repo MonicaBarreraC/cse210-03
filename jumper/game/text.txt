@@ -12,15 +12,22 @@
 
 
 Classes:
+
+    hider - 
+
+    seeker -    
+
+
     - words.py ->
         * A list of Words
         * Method: select one random word
     - Jumper
         * Number of lives
-    - Organizer?
-        * Similar to director or dealer
     - Comparator?
         * If the input letter is on the word
+    - Organizer?
+        * Similar to director or dealer
+    
 
 Parachute
 
@@ -64,9 +71,9 @@ Parachute
      / \
 
 Program:
-    ° Get a random word from the list
-    -> Loop:
-        ° Print the word with '_'
+    ° Get a random word from the list  # class
+    -> Loop: # director
+        ° Print the word with '_' 
         ° Print Jumper status
         ° Ask for a letter
     ° End
