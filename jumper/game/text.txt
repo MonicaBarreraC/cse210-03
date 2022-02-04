@@ -11,8 +11,8 @@
     - Chris -> Jumper
     - Jonathan -> Jumper
     - James -> Director
-    - Lewis ->
-    - Mónica ->
+    - Lewis -> README - Jumper
+    - Mónica -> Director - Guesser
 
 
 Classes:
