@@ -1,5 +1,6 @@
 import random
 from pprint import pprint
+from Word import Word
 
 class Jumper:
     """The person jumping from the sky with a parachute and a word. 
@@ -21,9 +22,8 @@ class Jumper:
             self (Jumper): An instance of Jumper.
         """
         self._alive = True
-        self._word = random.choice(['cat', 'sequence', 'computer', 'github', 
-                                    'bathbomb', 'green', 'slack', 'fork', 
-                                    'covid', 'python'])
+        self._word_obj = Word()
+        self._word = self._word_obj.get_word()
         
         self._word_str_representation = ''
         for i in range(len(self._word)):
