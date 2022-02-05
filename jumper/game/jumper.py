@@ -1,6 +1,6 @@
 import random
 from pprint import pprint
-from Word import Word
+from game.Word import Word
 
 class Jumper:
     """The person jumping from the sky with a parachute and a word. 
@@ -23,6 +23,7 @@ class Jumper:
         """
         self._alive = True
         self._word_obj = Word()
+        print(self._word_obj.get_word())
         self._word = self._word_obj.get_word()
         
         self._word_str_representation = ''
