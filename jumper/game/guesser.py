@@ -1,30 +1,37 @@
-import random
+import random, string
 
-
-class Card:
-    """A rectangular piece of cardboard or other material with an identical pattern on one side and 
-    different numbers and symbols on the other.
-
-    The responsibility of Card is to keep track of the number of the card and calculate the points for 
-    it.
-   
+class Guesser:
+    """The person trying to guess the word before the jumper dies. 
+    
+    The responsibility of a Guesser is to guess letters in the randomly chosen word without guessing too much.
+    
     Attributes:
-        value (int): The number of the card.
+        guess (str/char): A letter guess (a-z).
     """
 
     def __init__(self):
-        """Constructs a new instance of Card.
+        """Constructs a new Guesser.
 
         Args:
-            self (Card): An instance of Card.
+            self (Guesser): An instance of Guesser.
         """
+        self._guess = random.choice(string.ascii_lowercase)
+       
 
-        self.value = 0
-
-    def pick(self):
-        """Generates a new random value for the card.
+    def get_letter(self):
+        """Gets the current guess.
         
-        Args:
-            self (Card): An instance of Card.
+        Returns:
+            str/char: The current guess (1 lowercase char, a-z)
         """
-        self.value = random.randint(1,13)
+        return self._guess.lower()
+        
+
+    def change_guess(self, guess):
+        """Changes to the given guess.
+
+        Args:
+            self (Guesser): An instance of Guesser.
+            guess (str/char): The new guess (a-z).
+        """
+        self._guess = guess.lower()
