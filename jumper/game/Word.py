@@ -1,6 +1,6 @@
 import random
 
-class Word():
+class Word:
         def __inti__(self):
                 """Constructor
                 
