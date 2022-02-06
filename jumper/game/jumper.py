@@ -33,15 +33,15 @@ class Jumper:
         self._response = [self._word_str_representation, '', '  ___', ' /___\\', ' \\   /', '  \\ /', '   0', '  /|\\', '  / \\', '', '^^^^^^^']
 
     
-    def get_hint(self):
-        """Gets a hint for the seeker.
+    """def get_hint(self):
+        Gets a hint for the seeker.
 
         Args:
             self (Hider): An instance of Hider.
         
         Returns:
             string: A hint for the seeker.
-        """
+        
         hint = "(-.-) Nap time."
         if self._distance[-1] == 0:
             hint = "(;.;) You found me!"
@@ -50,6 +50,7 @@ class Jumper:
         elif self._distance[-1] < self._distance[-2]:
             hint = "(>.<) Getting warmer!"
         return hint
+        """
 
     def is_found(self):
         """Whether or not the hider has been found.
