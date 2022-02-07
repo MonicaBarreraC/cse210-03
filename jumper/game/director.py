@@ -1,123 +1,75 @@
-from game.guesser import Card
+from game.guesser import Guesser
+from game.jumper import Jumper
+from game.terminal_service import TerminalService
 
-CRED = '\033[91m'
-CGRN = '\033[92m'
-CYEL = '\033[93m'
-CBLU = '\033[94m'
-CEND = '\033[0m'
-
-class Dealer:
+class Director:
     """A person who directs the game. 
     
-    The responsibility of a Dealer is to control the sequence of play.
+    The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-        is_playing (boolean): Whether or not the game is being played.
-        previous (int): The value of the previous card.
-        current (int): The value of the current card.
-        hi_lo (string): The anser of the player to the question High/Low.
-        total_score (int): The score for the entire game.
-        first_turn (boolean): Wheter or not the first turn is being played.
+        jumper (Jumper): The game's jumper.
+        is_playing (boolean): Whether or not to keep playing.
+        guesser (Guesser): The game's guesser.
+        terminal_service: For getting and displaying information on the terminal.
     """
 
-#Lewis ->
     def __init__(self):
-        """Constructs a new Dealer.
+        """Constructs a new Director.
         
         Args:
-            self (Dealer): an instance of Dealer.
+            self (Director): an instance of Director.
         """
-        self.is_playing = True
-        self.previous = 0
-        self.current = Card()
-        self.hi_lo = ""
-        self.total_score = 300
-        self.first_turn = True
-
-
-#Don't Change ->
+        #self._hider = Hider()
+        #self._is_playing = True
+        #self._seeker = Seeker()
+        #self._terminal_service = TerminalService()
+        self._jumper = Jumper()
+        self._is_playing = True
+        self._guesser = Guesser()
+        self._terminal_service = TerminalService()
+        
     def start_game(self):
         """Starts the game by running the main game loop.
         
         Args:
-            self (Dealer): an instance of Dealer.
+            self (Director): an instance of Director.
         """
-        
-        while self.is_playing:
-            self.get_inputs()
-            self.do_updates()
-            self.do_outputs()
+        while self._is_playing:
+            self._get_inputs()
+            self._do_updates()
+            self._do_outputs()
 
-        print("\nThanks for playing!\n")
-
-
-#Lewis ->
-    def get_inputs(self):
-        """Ask the user if they want to play. Draw a card before the first turn.
-           Then ask the user to guess if the next card is higher or lower.
+    def _get_inputs(self):
+        """Moves the seeker to a new location.
 
         Args:
-            self (Dealer): An instance of Dealer.
+            self (Director): An instance of Director.
         """
-        if self.first_turn:
-            temp_card = Card()
-            temp_card.pick()
-            self.previous = temp_card.value
-            print(f"\nLet's begin. Your starting score is {CGRN}{self.total_score} {CEND}")
-            print(f"\nYour first card is {CBLU}{self.previous}{CEND}")
-        else:
-            print(f"\nThe card is {CBLU}{self.current.value}{CEND}")
+        #new_location = self._terminal_service.read_number("\nEnter a location [1-1000]: ")
+        #self._seeker.move_location(new_location)
         
-        self.hi_lo = input("Higher or lower? [h/l] ").lower()
-        #self.is_playing = (self.hi_lo == "h")
+        self._jumper.get_response()
+        new_guess = self._terminal_service.read_letter('\nGuess a letter (a-z): ')
+        self._guesser.change_guess(new_guess)
         
-
-
-#Christopher ->       
-    def do_updates(self):
-        """Updates the player's score and prints the value of the
-           second card
+    def _do_updates(self):
+        """Keeps watch on where the seeker is moving.
 
         Args:
-            self (Dealer): An instance of Dealer.
+            self (Director): An instance of Director.
         """
-        if not self.is_playing:
-            return 
-
-        if self.first_turn:
-            self.first_turn = False
-        else:
-            self.previous = self.current.value
+        #self._hider.watch_seeker(self._seeker)
+        self._jumper.receive_guess(self._guesser)
+        self._response = self._jumper.get_response()
         
-        # Add to the total score (100, -75, 0)
-
-        self.current.pick()
-        print(f"Next card was {CBLU}{self.current.value}{CEND}")
-        
-        if self.hi_lo == 'h' and self.current.value > self.previous:
-            self.total_score += 100
-        elif self.hi_lo == 'h' and self.current.value < self.previous:
-            self.total_score += -75
-        elif self.hi_lo == 'l' and self.current.value > self.previous:
-            self.total_score += -75
-        elif self.hi_lo == 'l' and self.current.value < self.previous:
-            self.total_score += 100
-        else:
-            self.total_score += 0
-
-
-#Christopher ->       
-    def do_outputs(self):
-        """Displays the score. Also asks the player if they want to draw again. 
+    def _do_outputs(self):
+        """Provides a hint for the seeker to use.
 
         Args:
-            self (Dealer): An instance of Dealer.
+            self (Director): An instance of Director.
         """
-        if self.total_score <= 0:
-            self.is_playing = False
-            print(f"You lose. Your score is {CRED}{self.total_score}{CEND}")
-        
-        else:
-            print(f"Your score is: {self.total_score}")
-            keep_playing = input("Draw again? [y/n] ")
-            self.is_playing = (keep_playing == "y")
+        #hint = self._hider.get_hint()
+        #self._terminal_service.write_text(hint)
+        #if self._hider.is_found():
+            #self._is_playing = False
