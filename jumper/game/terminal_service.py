@@ -44,6 +44,13 @@ class TerminalService:
         pprint(text)
 
     def write_word(self, array):
+        """Displays the given array on the terminal. 
+           The entire word should be on the same line
+
+        Args: 
+            self (TerminalService): An instance of TerminalService.
+            array (array): The array to display.
+        """
         print()
         for i in range(len(array)):
             print(f"{array[i]}", end=" ")

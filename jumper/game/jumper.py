@@ -21,14 +21,14 @@ class Jumper:
         Args:
             self (Jumper): An instance of Jumper.
         """
-        self._alive = True ###
+        #self._alive = True ###
         self._nlives = 4
         self._word_obj = Word()
         self._word = ""
         self._array_word = []
         
         # self._word_obj._word = self._word_obj.get_word
-       # print(self._word_obj.get_word)
+        # print(self._word_obj.get_word)
         '''
         self._word_str_representation = ''
         for i in range(len(self._word)):
@@ -39,60 +39,46 @@ class Jumper:
     
 
     def select_secret_word(self):
-        """ Set a word, choose a word from the list using the word object
+        """Set a word, choosing one from the list using the word object
+
+        Args:
+            self (Jumper): An instance of Jumper.
         """
         self._word = self._word_obj.get_word()
         
 
     def get_secret_word(self):
+        """Gets the secret word.
+
+        Args:
+            self (Jumper): An instance of Jumper.
+        """
         return self._word
 
     def get_array_word(self):
+        """Gets the array_word. 
+
+        Args:
+            self (Jumper): An instance of Jumper.
+        """
         return self._array_word
 
     def get_nlives(self):
+        """Gets the number of lives of the Jumper. 
+
+        Args:
+            self (Jumper): An instance of Jumper.
+        """
         return self._nlives
     
     def change_lives(self, number):
-        """Changes to the given number of lives.
+        """Changes the number of lives to the number given.
 
         Args:
             self (Jumper): An instance of Jumper.
             number (int): The new number of lives.
         """
-
         self._nlives = number
-
-
-    """def get_hint(self):
-        Gets a hint for the seeker.
-
-        Args:
-            self (Hider): An instance of Hider.
-        
-        Returns:
-            string: A hint for the seeker.
-        
-        hint = "(-.-) Nap time."
-        if self._distance[-1] == 0:
-            hint = "(;.;) You found me!"
-        elif self._distance[-1] > self._distance[-2]:
-            hint = "(^.^) Getting colder!"
-        elif self._distance[-1] < self._distance[-2]:
-            hint = "(>.<) Getting warmer!"
-        return hint
-        """
-    '''
-    def is_found(self):
-        """Whether or not the hider has been found.
-
-        Args:
-            self (Hider): An instance of Hider.
-            
-        Returns:
-            boolean: True if the hider was found; false if otherwise.
-        """
-        return (self._distance[-1] == 0)'''
         
     # refactor, as receive_guess
     #def watch_seeker(self, seeker):
@@ -105,6 +91,7 @@ class Jumper:
         #self._distance.append(distance)
 
     # ->
+    '''
     def receive_guess(self, guesser):
         """Listens to the guesser, and adds the letter to the hidden 
         word or loses some of the parachute.
@@ -129,15 +116,15 @@ class Jumper:
             del self._response[2]
         elif guesser.get_letter() not in self._word and self._response == '   0':
             self._response[2] = '   x'
-            self._alive = False
+            self._alive = False'''
 
-    # ->
     def compare_letter(self, guesser):
-        """Listens to the guesser, and adds the letter to the hidden 
-        word or loses some of the parachute.
+        """Listens to the guesser, and adds the letter to the secret 
+        word or loose part of the parachute.
 
         Args:
             self (Jumper): An instance of Jumper.
+            guesser(Guesser): An instance of Guesser.
         """
         correct = 0
         for i in range(len(self._array_word)):
@@ -145,10 +132,11 @@ class Jumper:
                 guesser.set_char_word(i, guesser.get_guess())
                 correct += 1
 
+        # The correct is to prevent loosing more than one live in only one guess (for loop)
         if correct <= 0:
             self.change_lives(self.get_nlives() - 1)
     
-    # ->
+    '''# ->
     def get_response(self):
         """Getter method for the response
 
@@ -158,11 +146,13 @@ class Jumper:
         Returns:
             string: A list of strings for the Jumper.
         """
-        return self._response
+        return self._response'''
 
     def draw_status(self):
-        """
-        
+        """Prints a draw of the status of the jumper depending on the number of lives
+
+        Args:
+            self (Jumper): An instance of Jumper.
         """
         drawing = ['  ___', ' /___\\', ' \\   /', '  \\ /']
         for i in range(4-self._nlives, 4):
@@ -176,8 +166,10 @@ class Jumper:
         print('  /|\\ \n  / \\ \n\n^^^^^^^\n')
 
     def transform_word(self):
-        """
-        
+        """Convert a word like 'HELLO' into an array ['H','E','L','L','O']
+
+        Args:
+            self (Jumper): An instance of Jumper.
         """
         for i in range(len(self._word)):
             self._array_word.append(self._word[i])

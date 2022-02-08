@@ -4,10 +4,12 @@ from wsgiref.util import request_uri
 class Guesser:
     """The person trying to guess the word before the jumper dies. 
     
-    The responsibility of a Guesser is to guess letters in the randomly chosen word without guessing too much.
+    The responsibility of a Guesser is to guess letters in the randomly 
+    chosen word without guessing too much tries.
     
     Attributes:
-        guess (str/char): A letter guess (A-Z).
+        _guess (str/char): A letter (A-Z).
+        _array_guessing (array): This would be the jumper's word but in blank ('_')
     """
 
     def __init__(self):
@@ -24,31 +26,42 @@ class Guesser:
         """Gets the current guess.
         
         Returns:
-            str/char: The current guess (1 lowercase char, a-z)
+            str/char: The current guess (1 uppercase char, A-Z)
         """
         return self._guess.upper()
         
 
     def change_guess(self, new_guess):
-        """Changes to the given guess.
+        """Replace the previous guess for the new guess
 
         Args:
             self (Guesser): An instance of Guesser.
-            guess (str/char): The new guess (a-z).
+            new_guess (str/char): The new guess (a-z).
         """
         self._guess = new_guess.upper()
 
     def create_array_word(self, jumper):
-        """Takes the jumer secret word and creates a new array but every character is a '_'
+        """Takes the jumper secret word and creates a new array 
+           but every character is a '_'
+
+        Args:
+            self (Guesser): An instance of Guesser.
+            jumper (Jumper): An instance of Jumper.
         """
         for _ in range(len(jumper.get_secret_word())):
             self._array_guessing.append('_')
 
     def get_array_word(self):
+        """Gets the current guess_array.
+        
+        Returns:
+            array: The current array that the guesser is solving
+        """
         return self._array_guessing
 
     def set_char_word(self, index, new_letter):
-        """
-        changes the character of the array of an specific index and put the new letter in that place
+        """Changes the character in a specific index of the array
+        and put the new letter in that index
+
         """
         self._array_guessing[index] = new_letter

@@ -5,13 +5,15 @@ class Word:
                 """Constructor
                 
                 Args: self (Word)
+                Attributes:
+                        _word (string): The word
                 """
                 
                 self._word = ""
 
         def get_word(self):
                 """
-                Select a random word from the list of word
+                Select a random word from the list of words
 
                 Args: self (Word)
                 """

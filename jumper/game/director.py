@@ -87,7 +87,7 @@ class Director:
         #self._response = self._jumper.get_response()
         
     def _do_outputs(self):
-        """Provides a draw of the jumper
+        """Provides a draw of the jumper and the letters guessed at the moment
 
         Args:
             self (Director): An instance of Director.
