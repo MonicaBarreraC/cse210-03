@@ -1,4 +1,5 @@
 import random, string
+from wsgiref.util import request_uri
 
 class Guesser:
     """The person trying to guess the word before the jumper dies. 
@@ -36,3 +37,18 @@ class Guesser:
             guess (str/char): The new guess (a-z).
         """
         self._guess = new_guess.upper()
+
+    def create_array_word(self, jumper):
+        """Takes the jumer secret word and creates a new array but every character is a '_'
+        """
+        for _ in range(len(jumper.get_secret_word())):
+            self._array_guessing.append('_')
+
+    def get_array_word(self):
+        return self._array_guessing
+
+    def set_char_word(self, index, new_letter):
+        """
+        changes the character of the array of an specific index and put the new letter in that place
+        """
+        self._array_guessing[index] = new_letter

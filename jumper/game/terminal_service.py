@@ -42,3 +42,9 @@ class TerminalService:
             text (string): The text to display.
         """
         pprint(text)
+
+    def write_word(self, array):
+        
+        for i in range(len(array)):
+            print(f"{array[i]}", end=" ")
+        print("\n")

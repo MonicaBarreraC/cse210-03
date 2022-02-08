@@ -25,7 +25,7 @@ class Jumper:
         self._nlives = 4
         self._word_obj = Word()
         self._word = ""
-        self._array_word = [] ###########Maybe we don't need this
+        self._array_word = []
         
         # self._word_obj._word = self._word_obj.get_word
        # print(self._word_obj.get_word)
@@ -44,6 +44,14 @@ class Jumper:
         self._word = self._word_obj.get_word()
         
 
+    def get_secret_word(self):
+        return self._word
+
+    def get_array_word(self):
+        return self._array_word
+
+    def get_nlives(self):
+        return self._nlives
     
     def change_lives(self, number):
         """Changes to the given number of lives.
@@ -122,6 +130,23 @@ class Jumper:
         elif guesser.get_letter() not in self._word and self._response == '   0':
             self._response[2] = '   x'
             self._alive = False
+
+    # ->
+    def compare_letter(self, guesser):
+        """Listens to the guesser, and adds the letter to the hidden 
+        word or loses some of the parachute.
+
+        Args:
+            self (Jumper): An instance of Jumper.
+        """
+        correct = 0
+        for i in range(len(self._array_word)):
+            if guesser.get_guess() == self._array_word[i]:
+                guesser.set_char_word(i, guesser.get_guess())
+                correct += 1
+
+        if correct <= 0:
+            self.change_lives(self.get_nlives() - 1)
     
     # ->
     def get_response(self):
@@ -148,4 +173,11 @@ class Jumper:
         else:
             print('   0')
 
-        print('  /|\\ \n  / \\ \n\n^^^^^^^\n\n')
+        print('  /|\\ \n  / \\ \n\n^^^^^^^\n')
+
+    def transform_word(self):
+        """
+        
+        """
+        for i in range(len(self._word)):
+            self._array_word.append(self._word[i])
