@@ -44,7 +44,7 @@ class TerminalService:
         pprint(text)
 
     def write_word(self, array):
-        
+        print()
         for i in range(len(array)):
             print(f"{array[i]}", end=" ")
         print("\n")
