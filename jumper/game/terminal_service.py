@@ -29,7 +29,7 @@ class TerminalService:
             prompt (string): The prompt to display on the terminal.
 
         Returns:
-            float: The user's input (as a character).
+            string: The user's input (as a character).
         """
         return input(prompt).upper()
         
