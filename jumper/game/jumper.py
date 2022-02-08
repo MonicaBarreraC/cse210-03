@@ -22,7 +22,7 @@ class Jumper:
             self (Jumper): An instance of Jumper.
         """
         self._alive = True
-        self._word_obj = Word
+        self._word_obj = Word()
         self._word = self._word_obj.get_word
         print(self._word_obj.get_word)
         

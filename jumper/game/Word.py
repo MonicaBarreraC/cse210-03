@@ -6,7 +6,16 @@ class Word:
                 
                 Args: self (Word)
                 """
-                self._word = random.choice("ant", "arrow", "apple", "assume", "barn", "beetle", "business", "broom", "cold",
+                
+                self._word = ""
+
+        def get_word(self):
+                """
+                Select a random word from the list of word
+
+                Args: self (Word)
+                """
+                words = ["ant", "arrow", "apple", "assume", "barn", "beetle", "business", "broom", "cold",
                 "code", "client", "charge", "company", "combination", "duke", "dump", "disco",
                 "ditch", "discover", "discount", "eat", "earn", "effort", "envelope", "explain",
                 "efficient", "effusion", "four", "front", "flame", "fortify", "further", "forgive",
@@ -22,8 +31,7 @@ class Word:
                 "traditional", "toilet", "umbrella", "unicorn", "uniform", "unique", "upgrade",
                 "volcano", "vacuum", "vegetables", "vanilla", "vacation", "wagon", "watermelon",
                 "wheat", "western", "wealth", "website", "xenon", "xylophone", "young", "yolk",
-                "yucca", "yard", "yellow", "zircon", "zipper", "zigzag", "zombie").upper()
+                "yucca", "yard", "yellow", "zircon", "zipper", "zigzag", "zombie"]
 
-        def get_word(self):
-                """"""
+                self._word = random.choice(words).upper()
                 return self._word
