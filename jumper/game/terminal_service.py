@@ -31,7 +31,7 @@ class TerminalService:
         Returns:
             float: The user's input (as a character).
         """
-        return input(prompt).lower()
+        return input(prompt).upper()
         
     # this should be good
     def write_text(self, text):
