@@ -1,5 +1,5 @@
-import random
-from pprint import pprint
+#import random
+#from pprint import pprint
 from game.Word import Word
 
 class Jumper:
@@ -21,18 +21,41 @@ class Jumper:
         Args:
             self (Jumper): An instance of Jumper.
         """
-        self._alive = True
+        self._alive = True ###
+        self._nlives = 4
         self._word_obj = Word()
-        self._word = self._word_obj.get_word
-        print(self._word_obj.get_word)
+        self._word = ""
+        self._array_word = [] ###########Maybe we don't need this
         
+        # self._word_obj._word = self._word_obj.get_word
+       # print(self._word_obj.get_word)
+        '''
         self._word_str_representation = ''
         for i in range(len(self._word)):
             self._word_str_representation += '_ '
         
         self._response = [self._word_str_representation, '', '  ___', ' /___\\', ' \\   /', '  \\ /', '   0', '  /|\\', '  / \\', '', '^^^^^^^']
+        '''
+    
+
+    def select_secret_word(self):
+        """ Set a word, choose a word from the list using the word object
+        """
+        self._word = self._word_obj.get_word()
+        
 
     
+    def change_lives(self, number):
+        """Changes to the given number of lives.
+
+        Args:
+            self (Jumper): An instance of Jumper.
+            number (int): The new number of lives.
+        """
+
+        self._nlives = number
+
+
     """def get_hint(self):
         Gets a hint for the seeker.
 
@@ -51,7 +74,7 @@ class Jumper:
             hint = "(>.<) Getting warmer!"
         return hint
         """
-
+    '''
     def is_found(self):
         """Whether or not the hider has been found.
 
@@ -61,7 +84,7 @@ class Jumper:
         Returns:
             boolean: True if the hider was found; false if otherwise.
         """
-        return (self._distance[-1] == 0)
+        return (self._distance[-1] == 0)'''
         
     # refactor, as receive_guess
     #def watch_seeker(self, seeker):
@@ -72,6 +95,8 @@ class Jumper:
         #"""
         #distance = abs(self._location - seeker.get_location())
         #self._distance.append(distance)
+
+    # ->
     def receive_guess(self, guesser):
         """Listens to the guesser, and adds the letter to the hidden 
         word or loses some of the parachute.
@@ -98,7 +123,7 @@ class Jumper:
             self._response[2] = '   x'
             self._alive = False
     
-
+    # ->
     def get_response(self):
         """Getter method for the response
 
@@ -109,3 +134,18 @@ class Jumper:
             string: A list of strings for the Jumper.
         """
         return self._response
+
+    def draw_status(self):
+        """
+        
+        """
+        drawing = ['  ___', ' /___\\', ' \\   /', '  \\ /']
+        for i in range(4-self._nlives, 4):
+            print(drawing[i])
+        
+        if self._nlives == 0:
+            print('   x')
+        else:
+            print('   0')
+
+        print('  /|\\ \n  / \\ \n\n^^^^^^^\n\n')
