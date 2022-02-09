@@ -2,6 +2,9 @@
 #from pprint import pprint
 from game.Word import Word
 
+CRED = '\033[91m'
+CEND = '\033[0m'
+
 class Jumper:
     """The person jumping from the sky with a parachute and a word. 
     
@@ -159,11 +162,11 @@ class Jumper:
             print(drawing[i])
         
         if self._nlives == 0:
-            print('   x')
+            print(f'{CRED}   x\n  /|\\ \n  / \\ \n\n{CEND}^^^^^^^\n')
         else:
-            print('   0')
+            print('   0\n  /|\\ \n  / \\ \n\n^^^^^^^\n')
 
-        print('  /|\\ \n  / \\ \n\n^^^^^^^\n')
+        print()
 
     def transform_word(self):
         """Convert a word like 'HELLO' into an array ['H','E','L','L','O']

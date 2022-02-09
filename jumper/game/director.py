@@ -2,6 +2,11 @@ from game.guesser import Guesser
 from game.jumper import Jumper
 from game.terminal_service import TerminalService
 
+CRED = '\033[91m'
+CGRN = '\033[92m'
+CYEL = '\033[93m'
+CEND = '\033[0m'
+
 class Director:
     """A person who directs the game. 
     
@@ -32,7 +37,7 @@ class Director:
             self (Director): an instance of Director.
         """
         # Welcome
-        print("\nWelcome to the JUMPER - GAME")
+        print(f"\nWelcome to the {CYEL}JUMPER - GAME{CEND}")
 
         # Select the secret word for the game and transform it into an array
         self._jumper.select_secret_word()
@@ -75,13 +80,13 @@ class Director:
         if self._jumper.get_nlives() == 0:
             self._is_playing = False
 
-            print("\n* * * GAME OVER * * *")
+            print(f"\n* * * {CRED}GAME OVER{CEND} * * *")
             print(f"The word was {self._jumper.get_secret_word()}")
 
         # If they guess the word -> Congratulations!
         if self._guesser.get_array_word() == self._jumper.get_array_word():
             self._is_playing = False
-            print("\n* * * CONGRATULATIONS! * * *\nYou guessed the word:", end="")
+            print(f"\n* * * {CGRN}CONGRATULATIONS!{CEND} * * *\nYou guessed the word:", end="")
 
         #self._jumper.receive_guess(self._guesser)
         #self._response = self._jumper.get_response()
