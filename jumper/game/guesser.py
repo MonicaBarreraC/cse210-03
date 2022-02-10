@@ -1,5 +1,4 @@
 import random, string
-from wsgiref.util import request_uri
 
 class Guesser:
     """The person trying to guess the word before the jumper dies. 

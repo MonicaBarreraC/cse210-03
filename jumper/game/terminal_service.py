@@ -7,7 +7,7 @@ class TerminalService:
     terminal.
     """
      
-    # this should be good
+    # Not used in this case
     def read_text(self, prompt):
         """Gets text input from the terminal. Directs the user with the given prompt.
 
@@ -33,7 +33,7 @@ class TerminalService:
         """
         return input(prompt).upper()
         
-    # this should be good
+    # Not used in this case
     def write_text(self, text):
         """Displays the given text on the terminal. 
 
@@ -45,7 +45,7 @@ class TerminalService:
 
     def write_word(self, array):
         """Displays the given array on the terminal. 
-           The entire word should be on the same line
+           The entire word would be on the same line
 
         Args: 
             self (TerminalService): An instance of TerminalService.

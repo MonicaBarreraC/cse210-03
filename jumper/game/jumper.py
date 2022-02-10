@@ -24,21 +24,10 @@ class Jumper:
         Args:
             self (Jumper): An instance of Jumper.
         """
-        #self._alive = True ###
         self._nlives = 4
         self._word_obj = Word()
         self._word = ""
         self._array_word = []
-        
-        # self._word_obj._word = self._word_obj.get_word
-        # print(self._word_obj.get_word)
-        '''
-        self._word_str_representation = ''
-        for i in range(len(self._word)):
-            self._word_str_representation += '_ '
-        
-        self._response = [self._word_str_representation, '', '  ___', ' /___\\', ' \\   /', '  \\ /', '   0', '  /|\\', '  / \\', '', '^^^^^^^']
-        '''
     
 
     def select_secret_word(self):
@@ -83,43 +72,6 @@ class Jumper:
         """
         self._nlives = number
         
-    # refactor, as receive_guess
-    #def watch_seeker(self, seeker):
-        #"""Watches the seeker by keeping track of how far away it is.
-        #
-        #Args:
-        #    self (Hider): An instance of Hider.
-        #"""
-        #distance = abs(self._location - seeker.get_location())
-        #self._distance.append(distance)
-
-    # ->
-    '''
-    def receive_guess(self, guesser):
-        """Listens to the guesser, and adds the letter to the hidden 
-        word or loses some of the parachute.
-
-        Args:
-            self (Jumper): An instance of Jumper.
-        """
-        # Fix the respresentation of the hidden word in the response
-        short_word_representation = self._response[0].replace(' ', '')
-        for i in range(len(list(self._word))):
-            if self._word[i] == guesser.get_letter():
-                short_word_representation[i] = guesser.get_letter()
-        for i in range(len(list(self._word))):
-            print(short_word_representation[i])
-            #short_word_representation[i] = f"{short_word_representation[i]} "
-            #short_word_representation[i] += ' '
-        
-        self._response[0] = short_word_representation
-        
-        # Lose the parachute and die if the guesser runs out of guesses
-        if guesser.get_letter() not in self._word and self._response[2] != '   0':
-            del self._response[2]
-        elif guesser.get_letter() not in self._word and self._response == '   0':
-            self._response[2] = '   x'
-            self._alive = False'''
 
     def compare_letter(self, guesser):
         """Listens to the guesser, and adds the letter to the secret 
@@ -135,21 +87,10 @@ class Jumper:
                 guesser.set_char_word(i, guesser.get_guess())
                 correct += 1
 
-        # The correct is to prevent loosing more than one live in only one guess (for loop)
+        # The 'correct' is to prevent loosing more than one live in only one guess (for loop)
         if correct <= 0:
             self.change_lives(self.get_nlives() - 1)
     
-    '''# ->
-    def get_response(self):
-        """Getter method for the response
-
-        Args:
-            self (Jumper): An instance of Jumper.
-        
-        Returns:
-            string: A list of strings for the Jumper.
-        """
-        return self._response'''
 
     def draw_status(self):
         """Prints a draw of the status of the jumper depending on the number of lives
@@ -167,6 +108,7 @@ class Jumper:
             print('   0\n  /|\\ \n  / \\ \n\n^^^^^^^\n')
 
         print()
+        
 
     def transform_word(self):
         """Convert a word like 'HELLO' into an array ['H','E','L','L','O']
